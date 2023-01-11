@@ -8,14 +8,15 @@ use App\Http\Controllers\AdminAuth\NewPasswordController;
 use App\Http\Controllers\AdminAuth\PasswordController;
 use App\Http\Controllers\AdminAuth\PasswordResetLinkController;
 use App\Http\Controllers\AdminAuth\RegisteredUserController;
+use App\Http\Controllers\AdminAuth\StudentController;
+use App\Http\Controllers\AdminAuth\TeacherController;
 use App\Http\Controllers\AdminAuth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::group(['middleware' => ['guest:admin'], 'prefix'=>'admin/', 'as'=> 'admin.'],function(){
+//Route::middleware('guest:admin')->group(function () {
+    Route::group(['middleware'=>['guest:admin'],'prefix'=>'admin','as'=>'admin.'],function(){
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
-
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -36,7 +37,8 @@ Route::group(['middleware' => ['guest:admin'], 'prefix'=>'admin/', 'as'=> 'admin
                 ->name('password.store');
 });
 
-Route::group(['middleware' => ['auth:admin'], 'prefix'=>'admin', 'as'=> 'admin.'],function(){
+ Route::group(['middleware' => ['auth:admin'], 'prefix'=>'admin', 'as'=> 'admin.'],function(){
+//Route::middleware('auth:admin')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
 
@@ -57,4 +59,10 @@ Route::group(['middleware' => ['auth:admin'], 'prefix'=>'admin', 'as'=> 'admin.'
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-});
+
+    Route::resource('student', StudentController::class);
+     Route::resource('teacher', TeacherController::class);
+
+ });
+
+// Route::redirect('/','admin/register');
