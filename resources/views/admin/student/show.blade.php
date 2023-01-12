@@ -12,12 +12,12 @@
                 @foreach($studnet->image as $img)
 
 {{--                    @if($img->extension = 'pdf')--}}
-                    <embed src="{{ url('image/admin/'.$img) }}">
+{{--                    <embed src="{{ url('image/admin/'.$img) }}">--}}
 {{--                    <a href="{{ url('image/admin/'.$img) }}">--}}
 {{--                        PDF FILE--}}
 {{--                    </a>--}}
-                    {{--                    <a href="{{ url('image/admin/'.$img) }}" target="_blank">--}}
-{{--                        <embed src="{{ url('image/admin/'.$img) }}">--}}
+                    <a href="{{ url('image/admin/'.$img) }}" target="_blank">{{ url('image/admin/'.$img) }}</a>
+{{--                        <embed src="{{ url('image/admin/'.$img-) }}">--}}
 {{--                    </a>--}}
 {{--                    <iframe src="{{ url('/image/admin/'.$img) }}#toolbar=0" width="100%" height="300px"></iframe>--}}
 {{--                         <iframe src="{{ url('image/admin/'.$img) }}"></iframe>--}}

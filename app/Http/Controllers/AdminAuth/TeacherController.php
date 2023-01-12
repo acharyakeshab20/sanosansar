@@ -20,6 +20,11 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function __construct(TeacherService $teacherService)
+    {
+             $this->teacherService =  $teacherService;
+    }
+
     public function index()
     {
 
