@@ -3,3 +3,4 @@
 --> API for User => (Login, Register, Logout, Forget Password, Reset Password)
 --> Exceptional Handling
 ---> Sigle, Multiple images and File Upload
+---> Using Laravel/Casts to display the flash message
