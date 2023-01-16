@@ -42,11 +42,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->all());
         $validation = $this->validate($request, [
             'name' => 'required|string',
             'phone' => 'required|numeric|digits:10',
             'address' => 'required',
             'image.*' => 'required|mimes:pdf,csv,xls,docx,doc,jpg,png,xlsx',
+            'message' => 'required'
         ]);
 
 
@@ -92,7 +94,10 @@ class StudentController extends Controller
             $image= $validation['image'] = $filelist;
 //            dd($dictionary,$image);
         }
+
         $create=  Student::create($validation);
+        flash('Student Updated Successfully')->success();
+        return redirect()->route('admin.student.index');
 
 
 //

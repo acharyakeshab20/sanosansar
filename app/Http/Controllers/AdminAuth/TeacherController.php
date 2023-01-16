@@ -29,11 +29,38 @@ class TeacherController extends Controller
     {
 
         try {
-            $teacher = Teacher::latest()->get();
-//           dd($teacher);
+            $teacher = Teacher::where('id',18)
+                                // ->orwhere('shift','aqua')
+                                ->Orwhere( function($query){
+                                    $query->select('created_at','11')
+                                        ->OrwhereDay('created_at','10');
+                                })
+                                ->get();
+                                // ->toSql();
+
+
+            //  $teacher = Teacher::where('shift','luffy')
+            //                     // ->orwhere('shift','aqua')
+            //                     // ->where( function($query){
+            //                     //     $query->whereMonth('created_at','01')
+            //                     //         ->OrwhereMonth('created_at','5');
+            //                     // })
+            //                     // ->get();
+            //                     ->toSql();
+            
+            // $teacher = Teacher::where('shift','yellow')
+            //                     ->where('cretaed_at','2023-01-04')
+            //                     // ->toSql();
+            //                     ->get();
+            
         }catch (\Exception $exception){
                 return view('errors.notfound');
         }
+
+        
+
+            //  echo $teacher; die();
+
 
         return view('admin.teacher.index',compact('teacher'));
     }

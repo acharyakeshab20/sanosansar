@@ -78,6 +78,13 @@
                     <x-text-input class="w-full py-2" placeholder="enter your Phone" id="phone" type="text" name="phone"></x-text-input>
                     <x-input-error :messages="$errors->get('phone')"></x-input-error>
                 </div>
+                <div>
+                    <div class="grid grid-cols-1 grid rows-1 gap-6">
+                            <x-input-label>Your Message</x-input-label>
+                            <textarea id="message" rows="4" name="message" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                            <x-input-error :messages="$errors->get('message')"></x-input-error>
+                    </div>
+                </div>
             </div>
             <div class="grid grid-cols-3 grid rows 3 gap-6 ">
                 <div></div>

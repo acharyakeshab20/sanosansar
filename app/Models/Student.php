@@ -16,7 +16,8 @@ class Student extends Model
         'name',
         'phone',
         'address',
-        'image'
+        'image',
+        'message'
     ];
 
 
