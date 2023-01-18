@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
-            // $table->string('phone');
-            // $table->string('address');
-            // $table->text('images');
-            // $table->date('DOB');
-            $table->enum('status',['Active','Inactive']);
+            $table->string('password');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('images')->nullable();
+            $table->date('DOB')->nullable();
+            $table->enum('status',['Active','Inactive'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
