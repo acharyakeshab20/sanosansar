@@ -5,3 +5,4 @@
 ---> Sigle, Multiple images and File Upload
 ---> Using Laravel/Casts to display the flash message
 ---> Changing colum data type
+---> Laravel service and Scope class
