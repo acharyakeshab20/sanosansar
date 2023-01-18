@@ -57,6 +57,8 @@
                 </table>
             </div>
         </div>
+    @else
+        <h2 class="text-center">No data found Regarding STudents</h2>
     @endif
     <div class="container mx-auto max-w-6xl bg-white p-10 mt-6 rounded-3xl">
         <form action="{{ route('admin.student.store') }}" method="post" enctype="multipart/form-data">

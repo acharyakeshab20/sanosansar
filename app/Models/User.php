@@ -49,6 +49,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    const CREATED_AT = 'Time_Of_Creation';
+    const UPDATED_AT = 'Time_Of_Updated';
+
 //    protected function password(): Attribute{
 //            return Attribute::make(
 //                set: fn ($value) => Hash::make($value),

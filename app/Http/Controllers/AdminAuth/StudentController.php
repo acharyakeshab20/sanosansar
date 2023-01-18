@@ -4,8 +4,11 @@ namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Service\studentService;
 use Faker\Core\File;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -19,7 +22,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $studnet= Student::all();
+        Gate::allows('isAdmin') ? Response::allow() : abort(404);
+        $service = new studentService();
+        $studnet =  $service->index();
+//        $studnet= Student::latest()->get();
 //        dd($studnet);
         return view('admin.student.index',compact('studnet'));
     }

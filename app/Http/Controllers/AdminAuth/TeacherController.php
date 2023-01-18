@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
 {
@@ -29,39 +30,46 @@ class TeacherController extends Controller
     {
 
         try {
-            $teacher = Teacher::where('id',18)
-                                // ->orwhere('shift','aqua')
-                                ->Orwhere( function($query){
-                                    $query->select('created_at','11')
-                                        ->OrwhereDay('created_at','10');
-                                })
-                                ->get();
+//            $teacher =  DB::table('teachers')->get();
+//              $teacher =  Teacher::where('name','Skyla Lockman IV')->get()->toSqL();
+
+//            dd($teacher);
+//            $teacher = Teacher::where('id',18)
+//                                // ->orwhere('shift','aqua')
+//                                ->Orwhere( function($query){
+//                                    $query->select('created_at','11')
+//                                        ->OrwhereDay('created_at','10');
+//                                })
+//                                ->get();
                                 // ->toSql();
+//            $teacher = Teacher::all();
 
+//              $teacher = Teacher::where('shift','luffy')
+//                                  ->orwhere('shift','aqua')
+//                                  ->where( function($query){
+//                                      $query->whereMonth('created_at','01')
+//                                          ->OrwhereMonth('created_at','5');
+//                                  })
+//                                  ->get();
+//                                 ->toSql();
 
-            //  $teacher = Teacher::where('shift','luffy')
-            //                     // ->orwhere('shift','aqua')
-            //                     // ->where( function($query){
-            //                     //     $query->whereMonth('created_at','01')
-            //                     //         ->OrwhereMonth('created_at','5');
-            //                     // })
-            //                     // ->get();
-            //                     ->toSql();
-            
+                $teacher = Teacher::shift("M",'Saige Block')
+                                    ->get();
+//
+//            $teacher = Teacher::shift('M')
+//                                ->email('ahmad30@example.com')
+//                                ->get();
+//            dd($teacher);
             // $teacher = Teacher::where('shift','yellow')
             //                     ->where('cretaed_at','2023-01-04')
             //                     // ->toSql();
             //                     ->get();
-            
+
         }catch (\Exception $exception){
                 return view('errors.notfound');
         }
 
-        
-
-            //  echo $teacher; die();
-
-
+//              echo $teacher; die();
         return view('admin.teacher.index',compact('teacher'));
     }
 

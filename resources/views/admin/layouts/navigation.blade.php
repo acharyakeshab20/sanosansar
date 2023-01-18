@@ -17,11 +17,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.student.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Student') }}
-                    </x-nav-link>
-                </div>
+                @can('isAdmin')
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('admin.student.index')" :active="request()->routeIs('dashboard')">
+                            {{ __('Student') }}
+                        </x-nav-link>
+                    </div>
+                @endcan
+
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('admin.teacher.index')" :active="request()->routeIs('dashboard')">
                         {{ __('Teacher') }}

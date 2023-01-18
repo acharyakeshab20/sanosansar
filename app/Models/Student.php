@@ -28,4 +28,8 @@ class Student extends Model
     public function thumbnails(): Attribute{
         return Attribute::make(get: fn($value,$attribute)=> json_decode($attribute['image'],true)[0]);
     }
+
+    public function scopeName($query,$value){
+        $query->whereName($value);
+    }
 }
