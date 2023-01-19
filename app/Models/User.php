@@ -18,6 +18,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table='users';
     protected $fillable = [
         'name',
         'email',
@@ -56,5 +57,9 @@ class User extends Authenticatable
 //            return Attribute::make(
 //                set: fn ($value) => Hash::make($value),
 //            );
+//    }
+
+//    public function orders(){
+//        return $this->hasMany( orders::class);
 //    }
 }

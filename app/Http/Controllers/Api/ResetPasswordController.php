@@ -59,7 +59,8 @@ class ResetPasswordController extends Controller
 
 
     public function reset(Request $request, $token){
-         $usersss= Auth::user();
+        //  $usersss= Auth::user();
+         //password reset ma vhako token ra user bata aako token url bata, thapaune kun user ko ho vhanera
         $validation= $this->validate($request,[
             'password' => 'required|confirmed'
         ]);
