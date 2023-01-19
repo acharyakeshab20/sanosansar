@@ -59,6 +59,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    Route::resource('order',\App\Http\Controllers\AdminAuth\OrderController::class);
+    Route::resource('orderDetails', \App\Http\Controllers\AdminAuth\OrderDetailss::class);
+    Route::resource('product', \App\Http\Controllers\AdminAuth\ProductController::class);
 });
 
 // Route::redirect('/','register');
