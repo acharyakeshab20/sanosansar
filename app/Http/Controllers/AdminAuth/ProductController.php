@@ -18,8 +18,8 @@ class ProductController extends Controller
     {
 //        $product =  product::where('sku','35415')->get();
 //            $product = product::where('name','Miss Shanel Nader V')->get();
-//        $product = DB::table('products')
-//                    ->where('name','Alejandra Dickens')->get();
+    //    $product = DB::table('products')
+    //                ->where('name','Alejandra Dickens')->get();
 
         $product = DB::table('products')
             ->where('sku','35415')->get();

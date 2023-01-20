@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminAuth;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderDetail;
 use App\Models\orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,10 +27,17 @@ class OrderController extends Controller
 //                        ->Where('order_number','=','101')
 ////                        ->where('order_number','>','102')
 //                        ->toSql();
-        $orders= DB::table('orders')
-                    ->join('users','orders.user_id', '=', 'users.id')
-                    ->select('users.name','orders.*','users.email')
-                    ->get();
+//        $orders= DB::table('orders')
+//                    ->join('users','orders.user_id', '=', 'users.id')
+//                    ->select('users.name','orders.*','users.email')
+//                    ->get();
+//        $orders = orders::with('user')
+//                ->where('created_at','>',now()->subYears(10))
+//                 ->get();
+
+//        $orders = orders::with('user')
+//            ->where('created_at',' > ', now()->subYears(2))
+//            ->get();
 //        dd($orders);
 //        echo $orders; die();
         return view('order.index',compact('orders'));

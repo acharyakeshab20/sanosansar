@@ -100,7 +100,7 @@ class StudentController extends Controller
             $image= $validation['image'] = $filelist;
 //            dd($dictionary,$image);
         }
-
+        
         $create=  Student::create($validation);
         flash('Student Updated Successfully')->success();
         return redirect()->route('admin.student.index');

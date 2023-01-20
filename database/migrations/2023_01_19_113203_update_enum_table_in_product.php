@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
-            $table->id();
-            $table->string('city');
-            $table->string('state');
-            $table->string('ward');
-            $table->string('home_address');
-            $table->timestamps();
-//            $table->index('home_address');
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('rating')->change();
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('rating');
+        });
     }
 };
