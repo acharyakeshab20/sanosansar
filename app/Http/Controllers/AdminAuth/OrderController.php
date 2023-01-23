@@ -18,7 +18,11 @@ class OrderController extends Controller
     public function index()
     {
 //        $orders = orders::latest()->get();
+
+
 //        $orders= orders::with('user')->get();
+
+
 //        $orders= orders::with('user')
 //                        ->where(function($query){
 //                            $query->where('order_number','=','102')
@@ -27,19 +31,61 @@ class OrderController extends Controller
 //                        ->Where('order_number','=','101')
 ////                        ->where('order_number','>','102')
 //                        ->toSql();
+
+
 //        $orders= DB::table('orders')
 //                    ->join('users','orders.user_id', '=', 'users.id')
 //                    ->select('users.name','orders.*','users.email')
 //                    ->get();
-//        $orders = orders::with('user')
-//                ->where('created_at','>',now()->subYears(10))
-//                 ->get();
+
 
 //        $orders = orders::with('user')
-//            ->where('created_at',' > ', now()->subYears(2))
+//                ->whereYear('created_at','2022')
+//                ->get();
+
+//        $orders = orders::with('user')
+//                            ->whereBetween('user_id',[20,23])
+//                            ->get();
+
+
+
+//        $orders = orders::with('user')
+//                            ->whereIn('user_id',[23,24])->get();
+//        dd($orders);
+
+//            $orders = orders::where('status','delivered')
+//                                ->whereExists(function ($query){
+//                                $query->from('users')
+//                                        ->whereRaw('users.id = orders.user_id')
+//                                        ->where('status','Active')
+//                                        ->where('gender','female');
+//                            })
+        $orders = orders::with('user')
+                                ->where('status','delivered')
+                                ->orwhereExists(function ($query){
+                                $query->from('users')
+                                        ->whereColumn('users.id','orders.user_id')
+//                                        ->whereRaw('users.id = orders.user_id')
+                                        ->where('status','Active')
+                                        ->where('gender','female');
+                            })
+//        $orders = orders::with('user')
+//                        ->where('status','pending')
+//                        ->toSql();
+                            
+                            ->orderBy('created_at', 'desc')->get();
+//        $orders = orders::with('user')
+//                       ->whereColumn('created_at','updated_at')
+////                        ->where('created_at','=','updated_at')
+//                       ->get();
+//        dd($orders);
+
+//        $orders = orders::with('user')
+//            ->where('created_at',' > ', now()->subYears(10))
 //            ->get();
 //        dd($orders);
 //        echo $orders; die();
+
         return view('order.index',compact('orders'));
     }
 
