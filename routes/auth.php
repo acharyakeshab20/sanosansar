@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAuth\PostController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -63,7 +64,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('order',\App\Http\Controllers\AdminAuth\OrderController::class);
     Route::resource('orderDetails', \App\Http\Controllers\AdminAuth\OrderDetailss::class);
     Route::resource('product', \App\Http\Controllers\AdminAuth\ProductController::class);
+
 });
+
 
 // Route::redirect('/','register');
 //Route::get('/', function () {

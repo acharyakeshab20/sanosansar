@@ -72,12 +72,13 @@ class OrderController extends Controller
 //        $orders = orders::with('user')
 //                        ->where('status','pending')
 //                        ->toSql();
-                            
-                            ->orderBy('created_at', 'desc')->get();
+                            ->orderBy('created_at', 'desc')
+                            // ->offset(2)
+                            ->limit(3)
 //        $orders = orders::with('user')
 //                       ->whereColumn('created_at','updated_at')
 ////                        ->where('created_at','=','updated_at')
-//                       ->get();
+                      ->get();
 //        dd($orders);
 
 //        $orders = orders::with('user')
@@ -96,7 +97,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+//        return view('order.get');
     }
 
     /**
