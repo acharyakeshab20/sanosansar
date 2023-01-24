@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminAuth\AjaxController;
 use App\Http\Controllers\AdminAuth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminAuth\ConfirmablePasswordController;
 use App\Http\Controllers\AdminAuth\EmailVerificationNotificationController;
@@ -61,7 +62,13 @@ use Illuminate\Support\Facades\Route;
                 ->name('logout');
 
     Route::resource('student', StudentController::class);
+//     Route::get('student',[StudentController::class,'index'])->name('student.index');
+//     Route::get('student',[StudentController::class,'index'])->name('student.indexs');
      Route::resource('teacher', TeacherController::class);
+     Route::get('ajax',[AjaxController::class,'index'])->name('ajax.index');
+     Route::post('ajax',[AjaxController::class,'show'])->name('ajax.show');
+     Route::post('ajax',[AjaxController::class,'showto'])->name('ajax.showto');
+
 
  });
 
